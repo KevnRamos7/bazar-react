@@ -17,24 +17,43 @@ const ProductDetail = () => {
         fetchProduct();
     }, [id]);
 
-  return (
-    <div>
-
-        {product ? (
-            <div>
-                <h1>{product.title}</h1>
-                <p>{product.price}</p>
-                <p>{product.category}</p>
-                <img src={product.thumbnail} alt={product.title} />
-                <p>Puntuacion: {product.rating}</p>
-                <button onClick={() => addPurchase(product)}>Comprar</button>
+return (
+    <div className="container my-5">
+      {product ? (
+        <div className="row">
+          <div className="col-md-6 mb-4">
+            {/* Imagen del producto */}
+            <img
+              src={product.thumbnail}
+              alt={product.title}
+              className="img-fluid rounded shadow-sm"
+            />
+          </div>
+          <div className="col-md-6">
+            {/* Detalles del producto */}
+            <h1 className="display-4 text-primary">{product.title}</h1>
+            <p className="h5 text-muted">{product.category}</p>
+            <p className="lead text-success">${product.price}</p>
+            <div className="mb-3">
+              <strong>Puntuación:</strong>
+              <span className="badge bg-warning text-dark ml-2">
+                {product.rating}
+              </span>
             </div>
-        ) : (
-            <p>Cargando...</p>
-        )}
-
+            {/* Botón de compra */}
+            <button
+              onClick={() => addPurchase(product)}
+              className="btn btn-lg btn-success mt-3"
+            >
+              Comprar
+            </button>
+          </div>
+        </div>
+      ) : (
+        <p className="text-center text-primary">Cargando...</p>
+      )}
     </div>
-  )
+)
 }
 
 export default ProductDetail

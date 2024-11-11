@@ -5,15 +5,25 @@ const AppContext = createContext();
 export const AppProvider = ({children}) => {
 
         const [searchResults, setSearchResults] = useState([]);
-        const [puchases, setPurchases] = useState([]);
+        const [purchases, setPurchases] = useState([]);
 
-        const addPucharse = (product) => {
-            setPurchases([...purchases, product]);
+        const addPurchase = (product) => {
+            setPurchases(prevPurchases => {
+                const existingProduct = prevPurchases.find(p => p.id === product.id);
+                if (existingProduct) {
+                    return prevPurchases.map(p =>
+                        p.id === product.id ? { ...p, cantidad: p.cantidad + 1 } : p
+                    );
+                } else {
+                    const { id, title, thumbnail, price } = product;
+                    return [...prevPurchases, { id, title, thumbnail, price, cantidad: 1 }];
+                }
+            });
         }
 
         return (
-            <AppContext.Provider value={{ searchResults, setSearchResults, puchases, addPucharse }}>
-                {children}
+            <AppContext.Provider value={{ searchResults, setSearchResults, purchases, addPurchase, setPurchases }}>
+            {children}
             </AppContext.Provider>  
         );
 
