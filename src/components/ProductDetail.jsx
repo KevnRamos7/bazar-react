@@ -10,7 +10,7 @@ const ProductDetail = () => {
 
     useEffect(() => {
         const fetchProduct = async () => {
-            const response = await fetch(`bazarReact.somee.com/api/sales/items/${id}`);
+            const response = await fetch(`https://bazarReact.somee.com/api/sales/items/${id}`);
             const data = await response.json();
             setProduct(data);
         }
