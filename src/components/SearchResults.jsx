@@ -10,7 +10,7 @@ const SearchResults = () => {
     useEffect(() => {
         const fetchSearchResults = async () => {
             let search = query === "" ? "." : query;
-            const response = await fetch(`http://bazarReact.somee.com/api/sales/items${search}`);
+            const response = await fetch(`//bazarReact.somee.com/api/sales/items${search}`);
             const data = await response.json();
             setSearchResults(data);
         }
