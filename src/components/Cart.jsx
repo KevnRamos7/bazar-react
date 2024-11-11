@@ -17,7 +17,7 @@ const Cart = () => {
             }));
             const salesPayload = JSON.stringify(salesData);
 
-            response = await fetch("http://bazarReact.somee.com/api/sales/addSale", {
+            response = await fetch("bazarReact.somee.com/api/sales/addSale", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

@@ -8,7 +8,7 @@ const Sales = () => {
 
     const fetchSales = async () => {
         try {
-            const response = await fetch("http://bazarReact.somee.com/api/sales/sales");
+            const response = await fetch("//bazarReact.somee.com/api/sales/sales");
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
